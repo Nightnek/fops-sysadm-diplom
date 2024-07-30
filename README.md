@@ -58,9 +58,7 @@
 Протестируйте сайт
 `curl -v <публичный IP балансера>:80` 
 
-````
-Сайт доступен по адресу: [http://51.250.41.122/](http://51.250.41.122/)
-````
+### Сайт доступен по адресу: [http://51.250.41.122/](http://51.250.41.122/)
 
 ![image](https://github.com/user-attachments/assets/74cd110c-909d-46fb-b707-1b6be42de111)
 
@@ -72,18 +70,18 @@
 
 Создайте ВМ, установите туда Grafana. Настройте её на взаимодействие с ранее развернутым Prometheus. Настройте дешборды с отображением метрик, минимальный набор — Utilization, Saturation, Errors для CPU, RAM, диски, сеть, http_response_count_total, http_response_size_bytes. Добавьте необходимые [tresholds](https://grafana.com/docs/grafana/latest/panels/thresholds/) на соответствующие графики.
 
-````
-Ссылка на отчет Grafana: http://158.160.57.60:3000/d/fdsnceuejak8wc/webservers-dashboard?orgId=1
-````
+
+### Ссылка на отчет Grafana: http://158.160.57.60:3000/d/fdsnceuejak8wc/webservers-dashboard?orgId=1
+
 
 ### Логи
 Cоздайте ВМ, разверните на ней Elasticsearch. Установите filebeat в ВМ к веб-серверам, настройте на отправку access.log, error.log nginx в Elasticsearch.
 
 Создайте ВМ, разверните на ней Kibana, сконфигурируйте соединение с Elasticsearch.
 
-````
-Отчет Kibana можно найти по ссылке: [http://51.250.66.249:5601/app/discover#/view/7183f57e-c988-4836-ba82-c00eaa8cc55a?_g=()](http://51.250.66.249:5601/app/discover#/view/7183f57e-c988-4836-ba82-c00eaa8cc55a?_g=())
 
+### Отчет Kibana можно найти по ссылке: [http://51.250.66.249:5601/app/discover#/view/7183f57e-c988-4836-ba82-c00eaa8cc55a?_g=()](http://51.250.66.249:5601/app/discover#/view/7183f57e-c988-4836-ba82-c00eaa8cc55a?_g=())
+````
 Логин: kibana
 Пароль: 2ln2mIJ-Ri2Vicw0ht_d
 
