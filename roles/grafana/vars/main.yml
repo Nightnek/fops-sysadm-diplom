@@ -1,0 +1,24 @@
+# defaults file for docker-grafana
+docker_grafana_name: grafana
+docker_grafana_image: grafana/grafana:latest
+docker_grafana_env:
+  GF_PATHS_CONFIG: /etc/grafana/grafana.ini
+  GF_SERVER_ROOT_URL: http://localhost:80/
+docker_grafana_net: default
+docker_grafana_expose:
+- 80:80
+docker_grafana_ports: "{{ docker_grafana_expose }}"
+
+# grafana sqlite3 database
+docker_grafana_data_dir: /opt/grafana/data
+docker_grafana_directory_volumes:
+- "{{ docker_grafana_data_dir }}:/var/lib/grafana:rw"
+docker_grafana_file_volumes: []
+docker_grafana_template_path: ""
+docker_grafana_volumes: "{{ docker_grafana_directory_volumes + docker_grafana_file_volumes }}"
+docker_grafana_links: []
+docker_grafana_log_driver: syslog
+docker_grafana_log_opt:
+  syslog-facility: local0
+  tag: grafana
+docker_grafana_memory_limit: 1024MB

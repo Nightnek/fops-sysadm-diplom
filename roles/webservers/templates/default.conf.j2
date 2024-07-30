@@ -1,0 +1,62 @@
+
+#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    log_format upstream_time  'ra=$remote_addr [$time_local] r="$request" '
+                      's=$status bbs=$body_bytes_sent hr="$http_referer" '
+                                          'hrct="$http_response_count_total" '
+                                          'rt=$request_time urt="$upstream_response_time" '
+                      'hua="$http_user_agent" hxff="$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  upstream_time;
+
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+
+server {
+    listen 80;
+    # Listen to the Port 80.
+    listen [::]:80;
+    # Listen to the Port 80 under IPv6 address.
+
+    server_name {{ ansible_hostname }};
+    # Name the server block: _, localhost, IP address, or domain name.
+
+    root /usr/share/nginx/html;
+    # Locate the root location of web files.
+    # Some installation may have this location - /var/www/html.
+
+    index index.php index.html index.htm;
+    # Set the default index file format. Many file formats can be assigned as mentioned above.
+
+    location / {
+	}
+    # Location block (example) for URLs.
+
+    location ~* .(css|js)$ { access_log off; expires max; }
+    # Location block (example) for static files.
+}
+}

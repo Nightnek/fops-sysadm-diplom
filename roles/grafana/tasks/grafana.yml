@@ -1,0 +1,41 @@
+- name: Create folder
+  file:
+    path: /opt/grafana/config/
+    state: directory
+  
+- name: Copy grafana.ini
+  ansible.builtin.copy:
+    src: /home/greg/roles/grafana/templates/grafana.ini
+    dest: /opt/grafana/config/grafana.ini
+
+- name: Remove existing {{ docker_grafana_name }} container
+  community.docker.docker_container:
+    image: grafana/grafana:latest
+    name: grafana
+    state: absent
+  tags:
+  - install
+  - upgrade
+
+- name: Run docker grafana container
+  become: true
+  community.docker.docker_container:
+#    exposed_ports:
+#      - 3000/tcp
+    image: grafana/grafana:latest
+    name: grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - /opt/grafana/config/grafana.ini:/etc/grafana/grafana.ini:ro
+      - /opt/grafana/data:/var/lib/grafana:rw
+    log_driver: syslog
+    log_opt:
+      syslog-facility: local0
+      tag: grafana
+    pull: false
+    restart_policy: always
+    state: started
+  tags:
+  - install
+  - upgrade

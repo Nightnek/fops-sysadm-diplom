@@ -1,0 +1,26 @@
+---
+# vars file for docker-kibana
+
+# vars file for docker-kibana
+docker_kibana_name: kibana
+docker_kibana_image: kibana:latest
+elasticsearch_url: http://192.168.1.5:9200
+docker_kibana_env:
+  ELASTICSEARCH_URL: "192.168.1.5"
+docker_kibana_command: "{{ elasticsearch_url }}"
+docker_kibana_net: default
+docker_kibana_expose:
+- 5601
+docker_kibana_ports:
+- 5601:5601
+docker_kibana_directory_volumes: []
+docker_kibana_file_volumes: []
+docker_kibana_volumes: "{{ docker_kibana_directory_volumes + docker_kibana_file_volumes }}"
+docker_kibana_template_path: ""
+docker_kibana_links: []
+docker_kibana_memory_limit: 512MB
+docker_kibana_log_driver: syslog
+docker_kibana_log_opt:
+  syslog-facility: local0
+  tag: "{{ docker_kibana_name }}"
+docker_api_version: 1.21
