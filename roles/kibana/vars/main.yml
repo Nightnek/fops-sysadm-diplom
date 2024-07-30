@@ -4,9 +4,9 @@
 # vars file for docker-kibana
 docker_kibana_name: kibana
 docker_kibana_image: kibana:latest
-elasticsearch_url: http://192.168.1.5:9200
+elasticsearch_url: http://fhm1adn24fi9808bjo3s.auto.internal:9200
 docker_kibana_env:
-  ELASTICSEARCH_URL: "192.168.1.5"
+  ELASTICSEARCH_URL: "fhm1adn24fi9808bjo3s.auto.internal"
 docker_kibana_command: "{{ elasticsearch_url }}"
 docker_kibana_net: default
 docker_kibana_expose:
