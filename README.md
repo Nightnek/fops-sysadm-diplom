@@ -73,6 +73,9 @@
 
 ### Ссылка на отчет Grafana: http://158.160.57.60:3000/d/fdsnceuejak8wc/webservers-dashboard?orgId=1
 
+Логин: admin
+Пароль: netologyCource
+
 
 ### Логи
 Cоздайте ВМ, разверните на ней Elasticsearch. Установите filebeat в ВМ к веб-серверам, настройте на отправку access.log, error.log nginx в Elasticsearch.
