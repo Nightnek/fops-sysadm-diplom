@@ -1,37 +1,37 @@
 
-#- hosts: webservers
-#  become: yes
-#  roles:
-  #  - exporter
-#  - filebeat
-#  - webservers
-#- hosts: prometheus
-#  become: yes
-#  roles:
-#  - prometheus
-#  vars:
-#    prometheus_targets:
-#      node:
-#      - targets:
-#        - "192.168.2.18:9090"
-#        - "192.168.1.19:9090"
+- hosts: webservers
+  become: yes
+  roles:
+  - exporter
+  - filebeat
+  - webservers
+- hosts: prometheus
+  become: yes
+  roles:
+  - prometheus
+  vars:
+    prometheus_targets:
+      node:
+      - targets:
+        - "epdkf34aosa2o2qucbqc.auto.internal:9090"
+        - "fhmcoe4852df9ji8i818.auto.internal:9090"
 
-#- hosts: kibana
-#  become: yes
-#  roles:
-#  - docker
-#  - kibana
+- hosts: kibana
+  become: yes
+  roles:
+  - docker
+  - kibana
 
-#- hosts: grafana
-#  become: yes
-#  gather_facts: false
+- hosts: grafana
+  become: yes
+  gather_facts: false
 
-#  roles:
-#  - docker
-#  - grafana
+  roles:
+  - docker
+  - grafana
 
 - hosts: elastic
   become: yes
   roles:
-#  - docker
+  - docker
   - elasticsearch
