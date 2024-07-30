@@ -85,8 +85,8 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 ### Отчет Kibana можно найти по ссылке: [http://51.250.66.249:5601/app/discover#/view/7183f57e-c988-4836-ba82-c00eaa8cc55a?_g=()](http://51.250.66.249:5601/app/discover#/view/7183f57e-c988-4836-ba82-c00eaa8cc55a?_g=())
 ````
-Логин: kibana
-Пароль: 2ln2mIJ-Ri2Vicw0ht_d
+Логин: elastic
+Пароль: JhUdk3iNBPzW=M*dDSIB
 
 ````
 
